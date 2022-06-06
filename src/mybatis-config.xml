@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+
+  <properties resource="db.properties" />
+  
+  <typeAliases>
+  	<typeAlias type="net.scit.susumepuri.vo.Song" alias="Song" />	
+  	<typeAlias type="net.scit.susumepuri.vo.Member" alias="Member" />	
+  	<typeAlias type="net.scit.susumepuri.vo.Playlist" alias="Playlist" />	
+  </typeAliases>
+  
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+  
+  <mappers>
+    <mapper resource="memberMapper.xml"/>
+    <mapper resource="songMapper.xml"/>
+    <mapper resource="playlistMapper.xml"/>
+    <!--  
+    <mapper resource="genreMapper.xml"/>
+    -->
+  </mappers>
+  
+</configuration>

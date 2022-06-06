@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.scit.susumepuri.dao.SongMapper">
+	<select id="getSongByName" parameterType="String"
+		resultType="Song">
+		SELECT * FROM SONGS
+		WHERE UPPER(SONGNAME) LIKE UPPER('%' || #{name} || '%')
+	</select>
+
+	<insert id="insertSong" parameterType="Song">
+		INSERT INTO songs
+		VALUES
+		(#{songid}, #{singer}, #{songname}, #{genreid}, #{releaseyear}, #{mbti})
+	</insert>
+
+
+	<select id="getAllBA" parameterType="string" resultType="Song">
+		SELECT
+		songid, singer, songname, genreid, releaseyear
+		FROM songs
+		WHERE
+		genreId =
+		'BA'
+	</select>
+
+	<select id="getAllHI" parameterType="string" resultType="Song">
+		SELECT
+		songid, singer, songname, genreid, releaseyear
+		FROM songs
+		WHERE
+		genreId =
+		'HI'
+	</select>
+
+	<select id="getAllDA" parameterType="string" resultType="Song">
+		SELECT
+		songid, singer, songname, genreid, releaseyear
+		FROM songs
+		WHERE
+		genreId =
+		'DA'
+	</select>
+
+	<select id="getAllRO" parameterType="string" resultType="Song">
+		SELECT
+		songid, singer, songname, genreid, releaseyear
+		FROM songs
+		WHERE
+		genreId =
+		'RO'
+	</select>
+
+	<select id="getAllCL" parameterType="string" resultType="Song">
+		SELECT
+		songid, singer, songname, genreid, releaseyear
+		FROM songs
+		WHERE
+		genreId =
+		'CL'
+	</select>
+</mapper>

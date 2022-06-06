@@ -1,0 +1,417 @@
+DROP TABLE PLAYLISTS;
+DROP TABLE MEMBERS;
+DROP TABLE SONGS;
+DROP SEQUENCE SONG_SEQ;
+DROP TABLE GENRES;
+
+CREATE TABLE GENRES
+(
+    genreId CHAR(2) PRIMARY KEY,
+    genreName VARCHAR2(50) NOT NULL
+);
+
+CREATE TABLE MEMBERS
+(
+    memberId VARCHAR2(20) PRIMARY KEY,
+    nickname VARCHAR2(50) NOT NULL,
+    mbti CHAR(4) NOT NULL,
+    genreId CHAR(2) REFERENCES GENRES(genreId) NOT NULL
+);
+
+CREATE TABLE SONGS
+(
+    songId NUMBER PRIMARY KEY,
+    singer VARCHAR2(100) NOT NULL,
+    songName VARCHAR2(200) NOT NULL, 
+    genreId CHAR(2) REFERENCES GENRES(genreId) NOT NULL,
+    releaseYear DATE NOT NULL,
+    mbti CHAR(4) 
+);
+
+CREATE SEQUENCE SONG_SEQ;
+
+CREATE TABLE PLAYLISTS
+(
+    memberId VARCHAR2(20) REFERENCES MEMBERS(memberId) ON DELETE CASCADE, 
+    songId NUMBER REFERENCES SONGS(songId) ON DELETE CASCADE 
+);
+
+INSERT INTO GENRES
+(GENREID, GENRENAME)
+VALUES
+('BA', '발라드');
+
+INSERT INTO GENRES
+(GENREID, GENRENAME)
+VALUES 
+('HI', '힙합');
+
+INSERT INTO GENRES
+(GENREID, GENRENAME)
+VALUES
+('DA', '댄스');
+
+INSERT INTO GENRES
+(GENREID, GENRENAME)
+VALUES 
+('RO', '락');
+
+INSERT INTO GENRES
+(GENREID, GENRENAME)
+VALUES
+('CL', '클래식');
+
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, '노을', '늦은 밤 너의 집 앞 골목길에서', '2019/11/07', 'BA');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, '먼데이키즈(Monday Kiz)', '사랑이 식었다고 말해도 돼', '2019/05/27', 'BA');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, '폴킴', '너를 만나', '2018/10/29', 'BA');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'HYNN(박혜원)', '시든 꽃에 물을 주듯', '2019/03/31', 'BA');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, '황인욱', '포장마차', '2019/06/20', 'BA');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, '엠씨더맥스(M.C the MAX)', '사계(하루살이)', '2019/01/02', 'BA');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'AKMU(악뮤)', '어떻게 이별까지 사랑하겠어, 널 사랑하는 거지', '2019/09/25', 'BA');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, '송하예', '니 소식', '2019/05/11', 'BA');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, '길구봉구', '이 별', '2017/09/18', 'BA');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, '윤종신', '좋니', '2017/06/22', 'BA');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, '멜로망스(Melomance)', '선물', '2017/07/10', 'BA');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, '한동근', '이 소설의 끝을 다시 써보려 해', '2014/09/30', 'BA');
+
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Kanye West', 'Black Skinhead', '2013/01/01', 'HI');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Eminem', 'Without Me', '2002/01/01', 'HI');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Kanye West, Big Sean, JAY Z', 'Clique', '2012/01/01', 'HI');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Jack Harlow', 'Tyler Herro', '2020/10/22', 'HI');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Tyga', 'Wish', '2014/11/24', 'HI');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Megan Thee Stallion', 'Eat It', '2021/10/29', 'HI');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Wiz Khalifa', 'Work Hard, Play Hard', '2012/12/04', 'HI');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Tyga', 'Lift Me Up', '2021/11/19', 'HI');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Megan Thee Stallion', 'Eat It', '2021/10/29', 'HI');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, '2 Chainz(Feat.42 Dugg)', 'Million Dollars Worth of Game', '2022/01/07', 'HI');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Joyner Lucas(Feat.Logic)', 'Isis', '2020/03/27', 'HI');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Lil Wayne', 'Mama Mia', '2020/01/30', 'HI');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Lil Wayne(Feat.Doja Cat)', 'Shimmy', '2020/06/17', 'HI');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Famous Dex(Feat.Rich The Kid & Tyga)', 'What I Like', '2020/04/03', 'HI');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Alec King', 'Dangerous', '2020/01/17', 'HI');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Brockhampton', 'Gummy', '2017/08/25', 'HI');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Migos', 'Taco Tuesday', '2020/05/04', 'HI');
+
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, '(여자) 아이들', 'TOMBOY', '2022/03/14', 'DA');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Red Velvet(레드벨벳)', '빨간 맛(Red Flavor)', '2017/07/09', 'DA');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'BLACKPINK', '마지막처럼', '2017/06/22', 'DA');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'TWICE(트와이스)', 'Dance The Night Away', '2018/07/09', 'DA');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Stefflon Don', '16 Shots', '2017/05/22', 'DA');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Fifth Harmony', 'Reflection', '2015/02/02', 'DA');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Little Mix', 'Power', '2016/11/18', 'DA');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Stray Kids(스트레이 키즈)', 'MANIAC', '2022/03/18', 'DA');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Jax Jones(Feat.Dmi Lovato, Stefflon Don', 'Instruction', '2017/06/16', 'DA');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, '오마이걸(OH MY GIRL)', 'Dolphin', '2020/04/27', 'DA');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Jessie J, Ariana Grande, Nicki Minaj', 'Bang Bang', '2014/10/13', 'DA');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'STAYC(스테이씨)', 'SO BAD', '2020/11/12', 'DA');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Beyonce', 'Partition', '2014/11/24', 'DA');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'aespa', 'Next Level', '2021/05/17', 'DA');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Demi Lovato', 'Sorry Not Sorry', '2017/09/29', 'DA');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Dawin', 'Dessert', '2015/03/16', 'DA');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Rihanna(Feat.Drake)', 'Work', '2016/01/28', 'DA');
+
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, '체리필터', '낭만고양이', '2002/08/13', 'RO');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Centuries', 'Fall Out Boy', '2015/01/19', 'RO');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Linkin Park', 'Faint', '2015/11/06', 'RO');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Linkin Park', 'Bleed It Out', '2007/05/14', 'RO');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Metallica', 'Fuel', '1997/01/01', 'RO');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Metallica', 'Master Of Puppets', '1986/03/03', 'RO');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Rage Against The Machine', 'Guerrilla Radio', '1999/11/02', 'RO');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Pantera', 'Cowboys From Hell', '1990/07/24', 'RO');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Halestorm', 'Daughters Of Darkness', '2012/04/19', 'RO');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Papa Roach', 'Last Resort', '2001/04/25', 'RO');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'Imagine Dragons', 'Believer', '2017/06/23', 'RO');
+
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'C.Debussy', 'Suite Bergamasque, L.75', '1905/01/01', 'CL');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'F.Chopin', 'Nocturne Op.9 No.2 in E flat Major', '1800/01/01', 'CL');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'F.Liszt', 'Consolations, S.172 - No.3 in D flat Major: Lento placido', '1850/01/01', 'CL');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'W.A.Mozart', 'Piano Concerto No.20 in d minor, K.466 - Ⅱ.Romance', '1770/01/01', 'CL');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'F.Chopin', 'Prelude Op.28 No.15 in D flat Major', '1801/01/01', 'CL');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'F.Liszt', 'Piano Sonata in b minor, S.178', '1847/02/02', 'CL');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'W.A.Mozart', 'Piano Sonata in F Major, K.332 - Ⅰ. Allegro', '1780/01/01', 'CL');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'F.Chopin', 'Prelude Op.28 No.15 in D flat Major', '1830/01/01', 'CL');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'F.Liszt', 'Piano Sonata in b minor, S.178', '1850/01/01', 'CL');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'W.A.Mozart', 'Piano Sonata in F Major, K.332 - Ⅰ. Allegro', '1790/01/01', 'CL');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'C.Debussy', 'Suite Bergamasque, L.75 - Ⅱ. Menuet', '1890/02/03', 'CL');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, 'F.Chopin', 'Nocturne Op.48 No.1 in c minor', '1830/02/01', 'CL');
+
+INSERT INTO SONGS
+(songId, singer, songName, releaseYear, genreId)
+VALUES
+(SONG_SEQ.nextval, '아스트로(ASTRO)', 'Candy Sugar Pop', '2022/05/16', 'DA');

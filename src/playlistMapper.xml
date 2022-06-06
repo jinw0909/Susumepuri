@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.scit.susumepuri.dao.PlaylistMapper">
+
+	<select id="getPlaylist" parameterType="String"
+		resultType="Song">
+
+		SELECT s.SONGID, s.SINGER, s.SONGNAME, TO_CHAR(s.RELEASEYEAR), s.GENREID,
+		s.mbti
+		FROM songs s, members m, playlists p
+		WHERE m.memberid = p.memberid AND
+		s.songid = p.songid
+		AND m.memberid = #{memberid}
+
+	</select>
+
+	<insert id="insertPlaylist" parameterType="Playlist">
+		INSERT INTO playlists
+		VALUES
+		(#{memberid}, #{songid})
+	</insert>
+</mapper>
