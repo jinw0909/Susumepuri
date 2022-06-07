@@ -72,7 +72,11 @@ public class Song {
 
 	@Override
 	public String toString() {
-		return "songID: " + songId + "- 가수 : " + singer + ", 노래 제목 : " + songName ;
+		return "songID : " + songId + " MBTI : " + mbti + " 제목 : " + songName;
 	}
+//	@Override
+//	public String toString() {
+//		return "songID: " + songId + "- 가수 : " + singer + ", 노래 제목 : " + songName   ;
+//	}
 
 }

@@ -44,11 +44,11 @@ public class PlaylistDAO {
 		return result;
 	}
 	
-	public int deletePlaylist(String memberId) {
+	public int deletePlaylist(Playlist playlist) {
 		SqlSession session = factory.openSession();
 		PlaylistMapper mapper = session.getMapper(PlaylistMapper.class);
 		
-		int result = mapper.deletePlaylist(memberId);
+		int result = mapper.deletePlaylist(playlist);
 		session.commit();
 		return result;
 	}
@@ -60,5 +60,14 @@ public class PlaylistDAO {
 		int result = mapper.countPlaylist();
 		return result;
 	}
+
+	public int checkDuplicate(Playlist playlist) {
+		SqlSession session = factory.openSession();
+		PlaylistMapper mapper = session.getMapper(PlaylistMapper.class);
+
+		int result = mapper.checkDuplicate(playlist);
+		return result;
+	}
+
 	
 }

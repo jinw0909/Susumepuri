@@ -16,18 +16,18 @@
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library" exported="">
-      <library name="mybatis-3.5.9.jar">
+      <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../libraries/mybatis-3.5.9.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../setupfiles/mybatis-3.5.9.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
     <orderEntry type="module-library" exported="">
-      <library name="ojdbc6.jar">
+      <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../libraries/ojdbc6.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../setupfiles/ojdbc6.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

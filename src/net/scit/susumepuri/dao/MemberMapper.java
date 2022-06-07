@@ -13,7 +13,7 @@ public interface MemberMapper {
 	public int insertMember(Member member);
 
 	//
-	public int getMember(String memberId);
+	public Member getMember(String memberId);
 
 	//전체출력
 	public List<Member> getAllMember();

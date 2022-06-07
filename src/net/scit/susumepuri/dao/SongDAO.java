@@ -1,6 +1,7 @@
 package net.scit.susumepuri.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -161,5 +162,14 @@ public class SongDAO {
 		 List<Song> list = mapper.getAllCL();
 		 
 		 return list;
+	}
+
+	public List<Song> getSongByMbti(Map<String, String> map) {
+		SqlSession session = null;
+		session = factory.openSession();
+
+		SongMapper mapper = session.getMapper(SongMapper.class);
+		List<Song> list = mapper.getSongByMbti(map);
+		return list;
 	}
 }

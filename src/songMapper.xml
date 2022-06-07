@@ -60,4 +60,11 @@
 		genreId =
 		'CL'
 	</select>
+
+	<select id="getSongByMbti" parameterType="map" resultType="Song">
+		SELECT * FROM SONGS
+				WHERE mbti LIKE UPPER('%' || #{first} || '%')
+				  AND mbti LIKE UPPER('%' || #{second} || '%')
+
+	</select>
 </mapper>

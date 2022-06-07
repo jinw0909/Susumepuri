@@ -1,6 +1,7 @@
 package net.scit.susumepuri.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import net.scit.susumepuri.vo.Song;
 
@@ -37,4 +38,5 @@ public interface SongMapper {
 
 	public List<Song> getAllCL();
 
+	public List<Song> getSongByMbti(Map<String, String> map);
 }

@@ -21,4 +21,16 @@
 		VALUES
 		(#{memberid}, #{songid})
 	</insert>
+
+	<delete id="deletePlaylist" parameterType="Map">
+		DELETE FROM playlists
+			  WHERE memberid = #{memberid}
+				AND songid = #{songid}
+	</delete>
+
+	<select id="checkDuplicate" parameterType="Playlist" resultType="int">
+		SELECT COUNT(*) FROM playlists
+			  WHERE memberid = #{memberid}
+				AND songid = #{songid}
+	</select>
 </mapper>

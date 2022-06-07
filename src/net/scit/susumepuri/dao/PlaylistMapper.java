@@ -10,6 +10,8 @@ public interface PlaylistMapper {
 	public List<Song> getPlaylist(String memberId);
 	public List<Playlist> getAll();
 	public int updatePlaylist(Playlist playlist);
-	public int deletePlaylist(String memberId);
+	public int deletePlaylist(Playlist playlist);
 	public int countPlaylist();
+	public int checkDuplicate(Playlist playlist);
+
 }

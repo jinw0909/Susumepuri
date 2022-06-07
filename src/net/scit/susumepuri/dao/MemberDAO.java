@@ -35,14 +35,14 @@ public class MemberDAO {
 		return result;
 	}
 
-	public int getMember(String memberId) {
+	public Member getMember(String memberId) {
 		SqlSession session = null;
 		session = factory.openSession();
 		
 		MemberMapper mapper = session.getMapper(MemberMapper.class);
-		int result = mapper.getMember(null);
+		Member member = mapper.getMember(null);
 		
-		return result;
+		return member;
 	}
 
 	public List<Member> getAllMember() {
